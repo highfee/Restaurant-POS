@@ -13,6 +13,8 @@ const Home = () => {
   const [currentMenu, setCurrentMenu] = useState(menu[currentIndex]);
   const [order, setOrder] = useState([]);
   const [active, setActive] = useState(false);
+  const [searchText, setSearchText] = useState("");
+
   useEffect(() => {
     setCurrentMenu(menu[currentIndex]);
     setTimeout(() => setActive(false), 2000);
@@ -76,5 +78,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// 156 163 175
