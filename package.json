@@ -1,0 +1,41 @@
+{
+  "private": true,
+  "name": "beebee-restaurant",
+  "description": "Beebee restaurant point of sale",
+  "version": "1.0.0",
+  "author": "Odediran Ifeoluwa 08135168529",
+  "main": "app/background.js",
+  "scripts": {
+    "web": "next dev",
+    "dev": "nextron",
+    "build": "nextron build",
+    "postinstall": "electron-builder install-app-deps",
+    "build:win32": "nextron build --win --ia32"
+  },
+  "dependencies": {
+    "electron-serve": "^1.1.0",
+    "electron-store": "^8.1.0",
+    "express": "^4.18.2",
+    "react-icons": "^4.7.1",
+    "react-transition-group": "^4.4.5",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "electron": "^21.3.3",
+    "electron-builder": "^23.6.0",
+    "next": "^12.3.4",
+    "nextron": "^8.5.0",
+    "postcss": "^8.4.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.2.6"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {
+        "config": "./renderer/tailwind.config.js"
+      }
+    }
+  }
+}

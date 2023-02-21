@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  transition: all 300ms ease-in;
+}
+body {
+  background: #292b2c;
+}
+
+.cashier__main__menu {
+  grid-template-columns: 3fr 1fr;
+}
+
+.menu_cards,
+.item_cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu_cards:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  padding: 0.5px;
+  left: 0;
+  bottom: 0;
+  background: #464444;
+}
+
+.active__link {
+  background: #292b2c;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .cashier__main__menu {
+    grid-template-columns: 1fr;
+  }
+}
+.bounce {
+  animation: bounce 2000ms ease-in-out;
+}
+
+.item_cards > div:hover {
+  border: 0;
+}
+.item_cards *:not(.absolute) {
+  z-index: 2;
+}
+.item_cards > div:hover .absolute {
+  width: 100%;
+}
+.item_cards > div:hover * {
+  color: #333;
+}
+.item_cards > div:hover div:has(svg) {
+  border-color: #333;
+}
+
+.item__point {
+  height: calc(100vh - 150px);
+  max-height: calc(100vh - 150px);
+  min-height: 700px;
+}
+
+.removedItem {
+  /* transform: translateX(110%);
+  transition: transform 500ms ease-in; */
+  animation: slide-out 500ms linear forwards;
+}
+.orderedItem {
+  animation: slide-in 500ms linear forwards;
+  cursor: pointer;
+  overflow: hidden;
+  transform: translateX(0);
+}
+.orderedItem:hover > div {
+  transform: translate(0);
+  transition: 300ms;
+  /* color: #a5abb6; */
+}
+
+/* .orderedItem:hover .remove {
+  display: block;
+} */
+.orderedItem > div {
+  transform: translateX(-47px);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(50%);
+  }
+  to {
+    transform: translate(0);
+  }
+}
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translate(120%);
+  }
+}
+
+@keyframes bounce {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  margin-left: 10px;
+}
+::-webkit-scrollbar-corner {
+  background: red;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #292b2c;
+  border-radius: 5px;
+  max-height: 100px !important;
+  background-clip: content-box;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: rgb(226, 234, 226);
+  border-radius: 5px;
+}
+/* 
+    #292b2c - light dark
+    #292b2c - very dark
+    #3d3f41 - lighter dark
+    #c2dae9 - card color
+    #c2e8df - card color hover
+*/
