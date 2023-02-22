@@ -1,8 +1,11 @@
 import OrderedItemCard from "./orderedItemCard";
 import OrderTotal from "./OrderTotal";
-const CashierHomeRight = ({ setOrder, order }) => {
+import { useSelector, useDispatch } from "react-redux";
+
+const CashierHomeRight = () => {
+  const orders = useSelector((state) => state.orderedItems.orderedItems);
   return (
-    <div className="h-[200px] sticky top-0  bg-red-90">
+    <div className="h-[200px] sticky top-6  bg-red-90">
       <header className=" flex p-3 pt-0 mb-5 text-white">
         <div>
           <p className="text-2xl">Table 5</p>
@@ -11,20 +14,14 @@ const CashierHomeRight = ({ setOrder, order }) => {
       </header>
 
       <div className="  item__point flex flex-col gap-6">
-        {order.length > 0 && (
+        {orders.length > 0 && (
           <section className="flex flex-col gap-2 max-h-[350px] overflow-hidden hover:overflow-auto hover:overflow-x-hidden pr-3">
-            {order.map((item, i) => (
-              <OrderedItemCard
-                item={item}
-                i={i}
-                order={order}
-                setOrder={setOrder}
-                key={item.id}
-              />
+            {orders.map((item, i) => (
+              <OrderedItemCard item={item} key={item.id} i={i} />
             ))}
           </section>
         )}
-        <OrderTotal order={order} />
+        <OrderTotal />
       </div>
     </div>
   );

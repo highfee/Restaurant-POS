@@ -1,19 +1,13 @@
 import { BiTrashAlt } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { deleteOrderItem } from "../redux/slices/orderedItems";
 
-const OrderedItemCard = ({ item, i, order, setOrder }) => {
+const OrderedItemCard = ({ item, i }) => {
+  const dispatch = useDispatch();
   const handleRemove = (e) => {
     e.target.parentNode.parentNode.classList.remove("orderedItem");
     e.target.parentNode.parentNode.classList.add("removedItem");
-
-    order.map((data) => {
-      if (data.id === item.id) {
-        item.quantity = 0;
-      }
-    });
-
-    setTimeout(() => {
-      setOrder(order.filter((item, index) => index !== i));
-    }, 500);
+    setTimeout(() => dispatch(deleteOrderItem(item)), 500);
   };
 
   return (

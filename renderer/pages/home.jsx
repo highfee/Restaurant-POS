@@ -9,7 +9,7 @@ function Home() {
       </Head>
       <div className="h-[100vh] bg-[#292b2c] text-white flex flex-col justify-center items-center gap-8">
         <h1 className="text-[8vw] font-[300] text-gay-800">
-          BeeBee Restaurant POS{" "}
+          Highfee Restaurant POS{" "}
         </h1>
         <div className="flex gap-12 text-[1.3vw] text-gry-800">
           <p className="flex items-center gap-2 hover:underline">

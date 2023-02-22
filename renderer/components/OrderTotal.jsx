@@ -1,17 +1,19 @@
 import { GiOpenedFoodCan } from "react-icons/gi";
 import { HiCreditCard, HiCurrencyDollar } from "react-icons/hi";
+import { useSelector } from "react-redux";
 
 const OrderTotal = ({ order }) => {
+  const orders = useSelector((state) => state.orderedItems.orderedItems);
   const calcSubtotal = () => {
     const total = 0;
-    order.map((item) => {
+    orders.map((item) => {
       total += item.price * item.quantity;
     });
     return total;
   };
   return (
     <div className="bg-[#292b2c] rounded-xl flex-1 relative p-6">
-      {order.length < 1 ? (
+      {orders.length < 1 ? (
         <div className="flex h-full justify-center items-center flex-col gap-8 relative -top-28">
           <GiOpenedFoodCan fill="#a5abb64f" size={100} />
           <p className="text-2xl text-gray-400">No items added</p>
@@ -49,10 +51,10 @@ const OrderTotal = ({ order }) => {
         <div
           className="w-full h-[50px] border rounded-full mt-4 text-white grid place-items-center text-2xl"
           style={{
-            backgroundColor: order.length > 0 ? "#c2dae9" : "#3d3f41",
-            color: order.length > 0 ? "#333" : "white",
-            opacity: order.length > 0 ? "1" : ".3",
-            pointerEvents: order.length > 0 ? undefined : "none",
+            backgroundColor: orders.length > 0 ? "#c2dae9" : "#3d3f41",
+            color: orders.length > 0 ? "#333" : "white",
+            opacity: orders.length > 0 ? "1" : ".3",
+            pointerEvents: orders.length > 0 ? undefined : "none",
           }}
           onClick={() => alert("hello")}
         >

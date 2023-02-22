@@ -1,14 +1,16 @@
 import { HiArrowNarrowRight, HiMinus, HiPlus } from "react-icons/hi";
+import { useSelector, useDispatch } from "react-redux";
+import { add, remove } from "../redux/slices/orderedItems";
+import {
+  incrementQuantity,
+  decrementQuantity,
+} from "../redux/slices/submenuSlice";
 
-const Submenu = ({
-  currentMenu,
-  active,
-  handleAddItem,
-  handleRemoveItem,
-  order,
-  setOrder,
-}) => {
-  console.log(currentMenu);
+const Submenu = () => {
+  const dispatch = useDispatch();
+  const currentMenu = useSelector((state) => state.submenu.currentMenu);
+  const active = useSelector((state) => state.submenu.active);
+
   return (
     <div className={`p-3 mt-3 item_cards ${active && "bounce"}`}>
       {currentMenu?.items.map((item, i) => (
@@ -27,7 +29,10 @@ const Submenu = ({
           <div className="flex justify-end gap-3 pr-3">
             <div
               className="border border-white px-1 py-2 rounded-lg cursor-pointer hover:scale-95"
-              onClick={() => handleRemoveItem(item, order, setOrder)}
+              onClick={() => {
+                dispatch(remove(item));
+                dispatch(decrementQuantity(item));
+              }}
             >
               <HiMinus size={22} />
             </div>
@@ -36,7 +41,8 @@ const Submenu = ({
             <div
               className="border border-white px-1 py-2 rounded-lg cursor-pointer hover:scale-95"
               onClick={() => {
-                handleAddItem(item, order, setOrder);
+                dispatch(add(item));
+                dispatch(incrementQuantity(item));
               }}
             >
               <HiPlus size={22} />

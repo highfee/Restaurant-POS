@@ -44,7 +44,7 @@ body {
   }
 }
 .bounce {
-  animation: bounce 2000ms ease-in-out;
+  animation: bounce 1500ms ease-in-out;
 }
 
 .item_cards > div:hover {
